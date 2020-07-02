@@ -1,0 +1,75 @@
+<h2>Ajouter un vaisseau : </h2>
+<div class="container">
+  <form #computerForm="ngForm" (ngSubmit)="submitComputer()">
+    <div class="form-group">
+      <label for="modele">Modèle</label>
+      <input type="text" class="form-control" id="modele" name="modele" placeholder="Modèle" required
+             [(ngModel)]="computer.modele" #modele="ngModel"/>
+      <div [hidden]="modele.valid" class="alert alert-danger">
+        Le modèle de l'ordinateur est requis
+      </div>
+
+      <label for="marque">Marque</label>
+      <!--   TODO: RADIO   -->
+      <input type="text" class="form-control" id="marque" name="marque" required [(ngModel)]="computer.marque"
+             #marque="ngModel"/>
+      <div [hidden]="marque.valid" class="alert alert-danger">
+        La marque de l'ordinateur est requise
+      </div>
+
+      <label for="type">Type</label>
+      <!--   TODO: SELECT   -->
+      <input type="text" class="form-control" id="type" name="type" required [(ngModel)]="computer.type"
+             #type="ngModel"/>
+      <div [hidden]="type.valid" class="alert alert-danger">
+        Le type de l'ordinateur est requis
+      </div>
+
+      <label for="category">Catégorie</label>
+      <!-- TODO: RADIO-->
+      <input type="text" class="form-control" id="category" name="category" required [(ngModel)]="computer.category"
+             #category="ngModel"/>
+      <div [hidden]="category.valid" class="alert alert-danger">
+        La catégorie de l'ordinateur est requise
+      </div>
+
+      <label for="prixAchat">Prix d'achat</label>
+      <input type="number" class="form-control" id="prixAchat" name="prixAchat" required
+             [(ngModel)]="computer.prixAchat" #prixAchat="ngModel"/>
+      <div [hidden]="prixAchat.valid" class="alert alert-danger">
+        Le prix d'achat de l'ordinateur est requis
+      </div>
+
+      <label for="prixVente">Prix de vente</label>
+      <input type="number" class="form-control" id="prixVente" name="prixVente"
+             [(ngModel)]="computer.prixVente" #prixVente="ngModel"/>
+
+      <label for="dateEntreStock">Date d'entrée en magasin</label>
+      <input type="date" class="form-control" id="dateEntreStock" name="dateEntreStock" required
+             [(ngModel)]="computer.dateEntreStock" #dateEntreStock="ngModel"/>
+      <div [hidden]="dateEntreStock.valid" class="alert alert-danger">
+        La date d'entrée est requise
+      </div>
+
+
+<!--      <div class="form-group">-->
+<!--        <p>Vitesse lumière</p>-->
+<!--        <div class="form-check form-check-inline">-->
+<!--          <input class="form-check-input" type="radio" name="lightspeed" id="hasLightspeed" [value]="true" required-->
+<!--                 [(ngModel)]="computer.hasLightspeed" #lightspeed="ngModel">-->
+<!--          <label class="form-check-label" for="hasLightspeed">Oui</label>-->
+<!--        </div>-->
+<!--        <div class="form-check form-check-inline">-->
+<!--          <input class="form-check-input" type="radio" name="lightspeed" id="hasNotLightspeed" [value]="false" required-->
+<!--                 [(ngModel)]="computer.hasLightspeed" #lightspeed="ngModel">-->
+<!--          <label class="form-check-label" for="hasNotLightspeed">Non</label>-->
+<!--        </div>-->
+<!--        <div [hidden]="lightspeed.valid" class="alert alert-danger">-->
+<!--          Un des boutons doit être sélectionné-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+
+    <input [disabled]="!computerForm.valid" type="submit"/>
+  </form>
+</div>

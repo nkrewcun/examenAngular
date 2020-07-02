@@ -1,0 +1,22 @@
+<div class="card" *ngIf="!isLoading">
+  <div class="card-body">
+    <h5 class="card-title">{{computer.modele}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{computer.marque}}</h6>
+    <p class="card-text">Type : {{computer.type}}</p>
+    <p class="card-text">Catégorie : {{computer.category}}</p>
+    <p class="card-text">Prix achat : {{computer.prixAchat}} €</p>
+    <p class="card-text">Prix vente : {{computer.prixVente ? computer.prixVente + ' €' : "Pas encore revendu"}}</p>
+    <p class="card-text">Indice de rentabilité : {{computer.prixVente ? computer.prixVente - computer.prixAchat + ' €' : "Pas encore revendu"}}</p>
+    <p class="card-text">Date d'entrée : {{computer.dateEntreStock | date: "dd/MM/yyyy"}}</p>
+    <a [routerLink]="['/computers/edit', computer.id]" role="button" class="btn btn-warning mr-1">Modifier</a>
+    <button (click)="deleteComputer(computer.id)" type="button" class="btn btn-danger">Supprimer</button>
+  </div>
+</div>
+<div class="text-center" *ngIf="isLoading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div>
+  <a routerLink="/computers" role="button" class="btn btn-primary">Retour au stock</a>
+</div>

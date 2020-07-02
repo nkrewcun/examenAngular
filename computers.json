@@ -9,6 +9,16 @@
       "prixAchat": 120.88,
       "prixVente": 300.10,
       "dateEntreStock": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "id": 2,
+      "modele": "Test",
+      "marque": "Asus",
+      "type": "Portable",
+      "category": "Bureautique",
+      "prixAchat": 250,
+      "prixVente": 0,
+      "dateEntreStock": "2012-04-23T18:25:43.511Z"
     }
   ]
 }

@@ -7,7 +7,7 @@ export class Computer {
   category: string;
   prixAchat: number;
   prixVente: number;
-  dateEntreeStock: Date;
+  dateEntreStock: Date;
 
   constructor(id: number = null, modele: string = null,
               marque: string = null, type: string = null,
@@ -20,6 +20,6 @@ export class Computer {
     this.category = category;
     this.prixAchat = prixAchat;
     this.prixVente = prixVente;
-    this.dateEntreeStock = null;
+    this.dateEntreStock = null;
   }
 }
