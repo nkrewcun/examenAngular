@@ -22,12 +22,12 @@
     },
     {
       "id": 3,
-      "modele": "sczb50g1",
+      "modele": "rm46geuy",
       "marque": "Dell",
-      "type": "Portable",
-      "category": "Gaming",
-      "prixAchat": 1246,
-      "prixVente": null,
+      "type": "Tablette hybride",
+      "category": "Bureautique",
+      "prixAchat": 1597,
+      "prixVente": 1788,
       "dateEntreStock": "2020-07-02T13:59:36.493Z"
     }
   ]

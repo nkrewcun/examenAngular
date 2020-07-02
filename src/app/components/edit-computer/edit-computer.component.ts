@@ -26,6 +26,11 @@ export class EditComputerComponent implements OnInit {
     this.categories = this.computerService.getAllCategories();
     this.computerService.getById(id).subscribe((data: Computer) => {
       this.computer = data;
+      document.querySelectorAll('#type option').forEach(option => {
+        if(option.getAttribute('value') === this.computer.type) {
+          option.setAttribute('selected', 'true');
+        }
+      });
       this.isLoading = false;
     });
   }

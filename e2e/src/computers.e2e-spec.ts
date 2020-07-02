@@ -17,23 +17,44 @@ describe('Test des ordinateurs', () => {
       nbComputers = tableLine.length;
       element(by.css('a.btn-primary')).click();
       expect(browser.driver.getCurrentUrl()).toContain('/computers/add');
-      page.sleep(1000);
+      page.sleep(2000);
     });
   });
 
   it('En tant qu\'utilisateur, je crée un nouvel ordinateur via le formulaire et je vérifie qu\'il a bien été ajouté', () => {
     browser.get('/computers/add');
     page.fillForm();
-    page.sleep(2000);
     const submitButton = element.all(by.css('input[type="submit"]'));
     submitButton.click().then(() => {
-      element.all(by.css('table.table tr')).then(newNbPlanets => {
+      element.all(by.css('table.table tr')).then(newNbComputers => {
         nbComputers++;
-        expect(newNbPlanets.length).toEqual(nbComputers);
+        expect(newNbComputers.length).toEqual(nbComputers);
+        page.sleep(2000);
       });
     });
   });
 
+  it('En tant qu\'utilisateur, je modifie un ordinateur via le formulaire et je vérifie que la modification a été prise en compte', () => {
+    element.all(by.css('td a.btn-warning')).last().click().then(() => {
+      page.editForm();
+      page.sleep(2000);
+      const submitButton = element.all(by.css('input[type="submit"]'));
+      submitButton.click().then(() => {
+        expect(browser.driver.getCurrentUrl()).toContain('/computers');
+        page.sleep(2000);
+      });
+    });
+  });
+
+  it('En tant qu\'utilisateur, je supprime un ordinateur', () => {
+    element.all(by.css('td button.btn-danger')).last().click().then(() => {
+      element.all(by.css('table.table tr')).then(newNbComputers => {
+        nbComputers--;
+        expect(newNbComputers.length).toEqual(nbComputers);
+        page.sleep(2000);
+      });
+    });
+  });
 
 // Quand tout est fini, nous fermons le navigateur et nous affichons les logs dans la console
   afterEach(async () => {
