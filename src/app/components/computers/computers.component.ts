@@ -20,8 +20,7 @@ export class ComputersComponent implements OnInit {
     this.isLoading = true;
     this.computerService.getAll().subscribe((data: Computer[]) => {
       this.computers = data;
-      this.nbComputers = this.computers.length;
-      this.nbStockedComputers = this.computers.filter((computer: Computer) => computer.prixVente === 0).length;
+      this.countComputers(this.computers);
       this.isLoading = false;
     });
   }
@@ -31,8 +30,14 @@ export class ComputersComponent implements OnInit {
     this.computerService.removeById(id).subscribe(() => {
       this.computerService.getAll().subscribe((data: Computer[]) => {
         this.computers = data;
+        this.countComputers(this.computers);
         this.isLoading = false;
       });
     });
+  }
+
+  countComputers(computers: Computer[]) {
+    this.nbComputers = computers.length;
+    this.nbStockedComputers = computers.filter((computer: Computer) => computer.prixVente === null).length;
   }
 }

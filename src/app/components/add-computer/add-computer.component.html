@@ -1,4 +1,4 @@
-<h2>Ajouter un vaisseau : </h2>
+<h2>Ajouter un ordinateur : </h2>
 <div class="container">
   <form #computerForm="ngForm" (ngSubmit)="submitComputer()">
     <div class="form-group">
@@ -9,28 +9,36 @@
         Le modèle de l'ordinateur est requis
       </div>
 
-      <label for="marque">Marque</label>
-      <!--   TODO: RADIO   -->
-      <input type="text" class="form-control" id="marque" name="marque" required [(ngModel)]="computer.marque"
-             #marque="ngModel"/>
-      <div [hidden]="marque.valid" class="alert alert-danger">
-        La marque de l'ordinateur est requise
+      <div class="form-group">
+        <p>Marque</p>
+        <div class="form-check form-check-inline" *ngFor="let marque of marques">
+          <input class="form-check-input" type="radio" name="marque" id="{{marque}}" [value]="marque" required
+              [(ngModel)]="computer.marque">
+          <label class="form-check-label" for="{{marque}}">{{marque}}</label>
+        </div>
+        <div [hidden]="computer.marque" class="alert alert-danger">
+          Une des marques doit être sélectionnée
+        </div>
       </div>
 
       <label for="type">Type</label>
-      <!--   TODO: SELECT   -->
-      <input type="text" class="form-control" id="type" name="type" required [(ngModel)]="computer.type"
-             #type="ngModel"/>
-      <div [hidden]="type.valid" class="alert alert-danger">
-        Le type de l'ordinateur est requis
+      <select id="type" class="custom-select" (change)="setType($event)">
+        <option value="" selected hidden>Type</option>
+        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+      </select>
+      <div [hidden]="computer.type" class="alert alert-danger">
+        Un des types doit être sélectionné
       </div>
 
-      <label for="category">Catégorie</label>
-      <!-- TODO: RADIO-->
-      <input type="text" class="form-control" id="category" name="category" required [(ngModel)]="computer.category"
-             #category="ngModel"/>
-      <div [hidden]="category.valid" class="alert alert-danger">
-        La catégorie de l'ordinateur est requise
+      <div class="form-group">
+        <p>Catégorie</p>
+        <div class="form-check form-check-inline" *ngFor="let category of categories">
+          <input class="form-check-input" type="radio" name="category" id="{{category}}" [value]="category" required [(ngModel)]="computer.category">
+          <label class="form-check-label" for="{{category}}">{{category}}</label>
+        </div>
+        <div [hidden]="computer.category" class="alert alert-danger">
+          Une des catégories doit être sélectionnée
+        </div>
       </div>
 
       <label for="prixAchat">Prix d'achat</label>
@@ -42,34 +50,10 @@
 
       <label for="prixVente">Prix de vente</label>
       <input type="number" class="form-control" id="prixVente" name="prixVente"
-             [(ngModel)]="computer.prixVente" #prixVente="ngModel"/>
+             [(ngModel)]="computer.prixVente"/>
 
-      <label for="dateEntreStock">Date d'entrée en magasin</label>
-      <input type="date" class="form-control" id="dateEntreStock" name="dateEntreStock" required
-             [(ngModel)]="computer.dateEntreStock" #dateEntreStock="ngModel"/>
-      <div [hidden]="dateEntreStock.valid" class="alert alert-danger">
-        La date d'entrée est requise
-      </div>
-
-
-<!--      <div class="form-group">-->
-<!--        <p>Vitesse lumière</p>-->
-<!--        <div class="form-check form-check-inline">-->
-<!--          <input class="form-check-input" type="radio" name="lightspeed" id="hasLightspeed" [value]="true" required-->
-<!--                 [(ngModel)]="computer.hasLightspeed" #lightspeed="ngModel">-->
-<!--          <label class="form-check-label" for="hasLightspeed">Oui</label>-->
-<!--        </div>-->
-<!--        <div class="form-check form-check-inline">-->
-<!--          <input class="form-check-input" type="radio" name="lightspeed" id="hasNotLightspeed" [value]="false" required-->
-<!--                 [(ngModel)]="computer.hasLightspeed" #lightspeed="ngModel">-->
-<!--          <label class="form-check-label" for="hasNotLightspeed">Non</label>-->
-<!--        </div>-->
-<!--        <div [hidden]="lightspeed.valid" class="alert alert-danger">-->
-<!--          Un des boutons doit être sélectionné-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
-
-    <input [disabled]="!computerForm.valid" type="submit"/>
+    <input [disabled]="(!computerForm.valid || !computer.type || !computer.marque || !computer.category)" type="submit"/>
   </form>
+
 </div>

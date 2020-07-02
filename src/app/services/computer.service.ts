@@ -16,6 +16,10 @@ export class ComputerService {
     })
   };
 
+  marques = ['Dell', 'HP', 'Apple', 'Asus'];
+  types = ['Portable', 'Fixe', 'Tablette hybride'];
+  categories = ['Gaming', 'Bureautique', 'Premier prix'];
+
   constructor(private http: HttpClient) {
   }
 
@@ -57,6 +61,18 @@ export class ComputerService {
         retry(1),
         catchError(this.handleError)
       );
+  }
+
+  getAllMarques(): string[] {
+    return this.marques;
+  }
+
+  getAllTypes(): string[] {
+    return this.types;
+  }
+
+  getAllCategories(): string[] {
+    return this.categories;
   }
 
   handleError(error) {

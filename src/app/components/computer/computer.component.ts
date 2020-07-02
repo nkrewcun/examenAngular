@@ -12,14 +12,13 @@ export class ComputerComponent implements OnInit {
 
   isLoading: boolean;
   computer: Computer;
-  id: number;
 
   constructor(private computerService: ComputerService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.id = +this.route.snapshot.paramMap.get('id');
-    this.computerService.getById(this.id).subscribe((data: Computer) => {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.computerService.getById(id).subscribe((data: Computer) => {
       this.computer = data;
       this.isLoading = false;
     });

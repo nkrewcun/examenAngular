@@ -26,7 +26,7 @@
     <td>{{computer.category}}</td>
     <td>{{computer.prixAchat}} €</td>
     <td>{{computer.prixVente ? computer.prixVente + ' €' : "Pas encore revendu"}}</td>
-    <td>{{computer.prixVente ? computer.prixVente - computer.prixAchat : "Pas encore revendu"}}</td>
+    <td>{{computer.prixVente ? computer.prixVente - computer.prixAchat + ' €' : "Pas encore revendu"}}</td>
     <td>{{computer.dateEntreStock | date: "dd/MM/yyyy"}}</td>
     <td>
       <a [routerLink]="['/computers', computer.id]" role="button" class="btn btn-primary mr-1">Consulter</a>

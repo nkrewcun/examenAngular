@@ -6,7 +6,7 @@
     <p class="card-text">Catégorie : {{computer.category}}</p>
     <p class="card-text">Prix achat : {{computer.prixAchat}} €</p>
     <p class="card-text">Prix vente : {{computer.prixVente ? computer.prixVente + ' €' : "Pas encore revendu"}}</p>
-    <p class="card-text">Indice de rentabilité : {{computer.prixVente ? computer.prixVente - computer.prixAchat + ' €' : "Pas encore revendu"}}</p>
+    <p class="card-text">Indice de rentabilité : {{computer.prixVente ? (computer.prixVente - computer.prixAchat + ' €') : "Pas encore revendu"}}</p>
     <p class="card-text">Date d'entrée : {{computer.dateEntreStock | date: "dd/MM/yyyy"}}</p>
     <a [routerLink]="['/computers/edit', computer.id]" role="button" class="btn btn-warning mr-1">Modifier</a>
     <button (click)="deleteComputer(computer.id)" type="button" class="btn btn-danger">Supprimer</button>
