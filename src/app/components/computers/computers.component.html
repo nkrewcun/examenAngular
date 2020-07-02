@@ -1,6 +1,7 @@
 <div *ngIf="!isLoading">
   <h2>Nombre d'ordinateurs : {{nbComputers}}</h2>
   <h2>Nombre d'ordinateurs en stock : {{nbStockedComputers}}</h2>
+  <a [routerLink]="['/computers/add']" role="button" class="btn btn-primary">Ajouter un ordinateur</a>
 
 </div>
 
@@ -24,12 +25,12 @@
     <td>{{computer.modele}}</td>
     <td>{{computer.type}}</td>
     <td>{{computer.category}}</td>
-    <td>{{computer.prixAchat}} €</td>
-    <td>{{computer.prixVente ? computer.prixVente + ' €' : "Pas encore revendu"}}</td>
-    <td>{{computer.prixVente ? computer.prixVente - computer.prixAchat + ' €' : "Pas encore revendu"}}</td>
+    <td>{{computer.prixAchat | number: '1.0-2'}} €</td>
+    <td>{{computer.prixVente ? (computer.prixVente | number:'1.0-2') + ' €' : "Pas encore revendu"}}</td>
+    <td>{{computer.prixVente ? ((computer.prixVente - computer.prixAchat) | number:'1.0-2') + ' €' : "Pas encore revendu"}}</td>
     <td>{{computer.dateEntreStock | date: "dd/MM/yyyy"}}</td>
     <td>
-      <a [routerLink]="['/computers', computer.id]" role="button" class="btn btn-primary mr-1">Consulter</a>
+      <a [routerLink]="['/computers', computer.id]" role="button" class="btn btn-info mr-1">Consulter</a>
       <a [routerLink]="['/computers/edit', computer.id]" role="button" class="btn btn-warning mr-1">Modifier</a>
       <button (click)="deleteComputer(computer.id)" type="button" class="btn btn-danger">Supprimer</button>
     </td>
